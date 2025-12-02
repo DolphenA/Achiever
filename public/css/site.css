@@ -1,0 +1,224 @@
+/* Server-served stylesheet for header/navbar behavior */
+/* Keeps header styles in a CSS file and provides a file the webserver can serve */
+
+/* Fixed-top navbar and spacing so content isn't hidden under the navbar */
+.navbar.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Ensure body content is pushed below the fixed navbar */
+body {
+  padding-top: 70px;
+}
+
+@media (max-width: 576px) {
+  body { padding-top: 56px; }
+}
+
+/* Optionally customize navbar colors here (keeps visual tweaks in CSS file) */
+.navbar.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+/* Add Task button styling */
+.add-task-button {
+  min-width: 200px;
+  padding: 1.5rem 3rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.add-task-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(25, 135, 84, 0.3);
+}
+
+.add-task-button:active {
+  transform: translateY(0);
+}
+
+/* Task Modal styling */
+.modal-content {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom: none;
+  padding: 1.25rem 1.5rem;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  border-top: 1px solid #dee2e6;
+  padding: 1rem 1.5rem;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+#saveTaskBtn {
+  min-width: 120px;
+  font-weight: 600;
+}
+
+/* Task List styling */
+.task-list-container {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.task-card {
+  transition: all 0.2s ease;
+  border-left: 4px solid #0d6efd;
+}
+
+.task-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateX(2px);
+}
+
+.task-card.task-completed {
+  opacity: 0.7;
+  border-left-color: #6c757d;
+}
+
+.task-name {
+  font-weight: 600;
+  color: #212529;
+}
+
+.task-checkbox {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+.task-card .btn-outline-danger {
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.task-card:hover .btn-outline-danger {
+  opacity: 1;
+}
+
+/* Custom scrollbar for task list */
+.task-list-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.task-list-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.task-list-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.task-list-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* All Tasks Page - Card View Styling */
+.task-card-view {
+  transition: all 0.3s ease;
+  border-left: 4px solid #0d6efd;
+}
+
+.task-card-view:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.task-card-view.task-completed {
+  opacity: 0.6;
+  border-left-color: #6c757d;
+}
+
+.task-card-view .card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.task-card-view .card-text {
+  max-height: 3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-card-view .card-footer {
+  padding: 0.5rem 1rem;
+}
+
+/* Search and filter bar */
+#searchTasks:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+/* Fireworks celebration effect */
+#fireworks-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  display: none;
+}
+
+#fireworks-container.active {
+  display: block;
+}
+
+.firework {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0);
+    opacity: 0;
+  }
+}
