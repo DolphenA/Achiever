@@ -462,5 +462,4 @@
             return date.toLocaleDateString('en-US', options);
         }
     </script>
-    <script src="{{ asset('js/fireworks.js') }}"></script>
 @include('partials.footer')
