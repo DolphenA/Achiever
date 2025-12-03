@@ -97,7 +97,10 @@ class AuthController extends Controller
         session()->regenerateToken();
         cookie()->queue(cookie()->forget('user_id'));
         
-        return redirect('/profile')->with('message', 'Logged out successfully');
+        return response()->json([
+            'success' => true,
+            'message' => 'Logged out successfully'
+        ]);
     }
 
     public function checkAuth(Request $request)
