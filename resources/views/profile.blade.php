@@ -277,7 +277,20 @@
 
         function logout() {
             if (confirm('Are you sure you want to logout?')) {
-                window.location.href = '{{ route("logout") }}';
+                fetch('{{ route("logout") }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.href = '/';
+                    }
+                })
+                .catch(error => console.error('Error:', error));
             }
         }
 
