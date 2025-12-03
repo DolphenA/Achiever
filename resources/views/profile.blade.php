@@ -171,7 +171,8 @@
                 if (data.success) {
                     currentUser = data.user;
                     hideError(errorDiv);
-                    showProfile();
+                    // Redirect to home page after successful login
+                    window.location.href = '/';
                 } else {
                     showError(errorDiv, data.message);
                 }
